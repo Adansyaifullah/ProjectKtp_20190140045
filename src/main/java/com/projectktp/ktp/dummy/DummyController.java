@@ -34,7 +34,7 @@ public class DummyController {
     DummyJpaController dummyController = new DummyJpaController();
   List<Dummy> data = new ArrayList<>();
 
-  @RequestMapping("/beranda")
+  @RequestMapping("/home")
   public String getDummy(Model model) {
     try {
       data = dummyController.findDummyEntities();
@@ -99,7 +99,7 @@ public class DummyController {
     dumdata.setGambar(image);
 
     dummyController.edit(dumdata);
-    respon.sendRedirect("/beranda");
+    respon.sendRedirect("/home");
     return "updated";
   }
   
@@ -107,7 +107,7 @@ public class DummyController {
   @ResponseBody
   public String deleteDummy(@PathVariable("id") int id, HttpServletResponse respon) throws Exception {
     dummyController.destroy(id);
-    respon.sendRedirect("/beranda");
+    respon.sendRedirect("/home");
     return "deleted";
   }
 }
